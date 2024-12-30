@@ -15,8 +15,6 @@ export class MediaPreview {
       const cameraSelect = document.getElementById('select-video');
       const selectedDeviceId = cameraSelect.value;
     
-      const cameraSelect = document.getElementById('select-video');
-      const selectedDeviceId = cameraSelect.value;
     
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { deviceId: selectedDeviceId ? { exact: selectedDeviceId } : undefined },
