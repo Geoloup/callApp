@@ -13,6 +13,7 @@ const useVideo = document.getElementById('use-video');
 const useAudio = document.getElementById('use-audio');
 const displayedRoomId = document.getElementById('displayed-room-id');
 const connectionInfo = document.getElementById('connection-info');
+const selector = document.getElementById('select-video');
 
 // Initialize utilities and views
 const mediaUtils = new MediaUtils();
@@ -79,3 +80,36 @@ useAudio.addEventListener('change', () => {
   mediaUtils.updateStream(peerUtils.currentCall);
   mediaPreview.start();
 });
+
+
+async function requestPermissions() {
+  try {
+    await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+    console.log("Permissions granted");
+    return true;
+  } catch (error) {
+    if (error.name === 'NotAllowedError') {
+      console.error("User denied access to the camera and microphone.");
+      alert("Please allow access to the camera and microphone to proceed.");
+    } else {
+      console.error("An error occurred:", error);
+    }
+    return false;
+  }
+}
+
+// Populate the camera dropdown
+async function populateCameraDropdown() {
+  const devices = await navigator.mediaDevices.enumerateDevices();
+  const videoDevices = devices.filter(device => device.kind === 'videoinput');
+  const cameraSelect = document.getElementById('select-video');
+
+  videoDevices.forEach((device, index) => {
+    const option = document.createElement('option');
+    option.value = device.deviceId;
+    option.textContent = device.label || `Camera ${index + 1}`;
+    cameraSelect.appendChild(option);
+  });
+}
+
+populateCameraDropdown()
