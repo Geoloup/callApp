@@ -12,9 +12,15 @@ export class MediaPreview {
 
   async start() {
     try {
+      const cameraSelect = document.getElementById('select-video');
+      const selectedDeviceId = cameraSelect.value;
+    
+      const cameraSelect = document.getElementById('select-video');
+      const selectedDeviceId = cameraSelect.value;
+    
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: document.getElementById('use-video').checked,
-        audio: document.getElementById('use-audio').checked,
+        video: { deviceId: selectedDeviceId ? { exact: selectedDeviceId } : undefined },
+        audio: true
       });
 
       // Set up video preview

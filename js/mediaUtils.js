@@ -9,8 +9,11 @@ export class MediaUtils {
     if (this.localStream) {
       this.localStream.getTracks().forEach(track => track.stop());
     }
+    const cameraSelect = document.getElementById('select-video');
+    const selectedDeviceId = cameraSelect.value;
+  
     const stream = await navigator.mediaDevices.getUserMedia({
-      video: true,
+      video: { deviceId: selectedDeviceId ? { exact: selectedDeviceId } : undefined },
       audio: true
     });
     
