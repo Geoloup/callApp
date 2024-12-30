@@ -76,9 +76,13 @@ async function getLocalStream() {
   }
 
   // Get new stream with current preferences
+
+  const cameraSelect = document.getElementById('select-video');
+  const selectedDeviceId = cameraSelect.value;
+
   const stream = await navigator.mediaDevices.getUserMedia({
-    video: useVideo.checked,
-    audio: useAudio.checked
+    video: { deviceId: selectedDeviceId ? { exact: selectedDeviceId } : undefined },
+    audio: true
   });
   
   localStream = stream;
