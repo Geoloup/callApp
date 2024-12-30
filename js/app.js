@@ -7,10 +7,11 @@ import { MediaPreview } from './mediaPreview.js';
 const setupForm = document.getElementById('setup-form');
 const hostBtn = document.getElementById('host-btn');
 const joinBtn = document.getElementById('join-btn');
-const hostId = document.getElementById('host-id');
-const joinId = document.getElementById('join-id');
+const hostId = document.getElementById('input-id');
+const joinId = document.getElementById('input-id');
 const useVideo = document.getElementById('use-video');
 const useAudio = document.getElementById('use-audio');
+const videoInput = document.getElementById('select-video')
 const displayedRoomId = document.getElementById('displayed-room-id');
 const connectionInfo = document.getElementById('connection-info');
 const selector = document.getElementById('select-video');
@@ -77,6 +78,11 @@ useVideo.addEventListener('change', () => {
 });
 
 useAudio.addEventListener('change', () => {
+  mediaUtils.updateStream(peerUtils.currentCall);
+  mediaPreview.start();
+});
+
+videoInput.addEventListener('change', () => {
   mediaUtils.updateStream(peerUtils.currentCall);
   mediaPreview.start();
 });
