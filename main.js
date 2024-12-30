@@ -31,12 +31,10 @@ createBtn.addEventListener('click', async () => {
 
   // Handle incoming calls
   peer.on('call', async (call) => {
-    if (confirm(`Accept call from ${call.peer}?`)) {
       // Get local stream with current audio/video preferences
       const stream = await getLocalStream();
       call.answer(stream);
       handleCall(call);
-    }
   });
 
   // Get initial local stream

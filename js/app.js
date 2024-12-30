@@ -39,7 +39,6 @@ hostBtn.addEventListener('click', async () => {
   });
 
   peer.on('call', async (call) => {
-    if (confirm(`Accept call from ${call.peer}?`)) {
       const stream = await mediaUtils.getLocalStream(
         useVideo.checked,
         useAudio.checked
@@ -47,7 +46,6 @@ hostBtn.addEventListener('click', async () => {
       call.answer(stream);
       peerUtils.handleCall(call,callView);
       setupForm.classList.add('hidden');
-    }
   });
 });
 
