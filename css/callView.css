@@ -1,0 +1,127 @@
+.call-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.customnumber {
+  z-index: 10;
+  top: 4px;
+  left: 50%;
+  position: absolute;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  width: 70px;
+  transform: translate(-50%);
+}
+
+.remote-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotateY(180deg);
+}
+
+.local-video-pip {
+  position: absolute;
+  right: 1rem;
+  bottom: 5rem;
+  width: 240px;
+  height: 135px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.local-video-pip video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotateY(180deg);
+}
+
+.call-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.control-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  align-content: center;
+  line-height: 0 !important;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.control-btn.muted {
+  background: #dc3545;
+}
+
+.control-btn.end-call {
+  background: #dc3545;
+}
+
+.control-btn.end-call:hover {
+  background: #c82333;
+}
+
+.audio-visualizer {
+  position: absolute;
+  bottom: 5rem;
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.audio-visualizer.local {
+  right: 1rem;
+  bottom: 2rem;
+}
+
+.audio-visualizer.remote {
+  left: 1rem;
+  bottom: 2rem;
+}
+
+.audio-visualizer canvas {
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.audio-visualizer span {
+  text-align: center;
+  color: white;
+  font-size: 0.8rem;
+}
